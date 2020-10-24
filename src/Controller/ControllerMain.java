@@ -15,11 +15,15 @@ public class ControllerMain {
 	}
 	
 	public void sendData() {
-		logic.combineData();
+		this.logic.combineData();
 	}
 	
 	public void paint() {
 		this.logic.paintScreen();
+	}
+	
+	public void clickEvents() {
+		this.logic.clickHandle();
 	}
 
 	public void sortByName() {

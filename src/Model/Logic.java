@@ -84,7 +84,8 @@ public class Logic {
 			p.fill(50, 50, 100);
 			p.stroke(255);
 			p.rect(0, 70 + (70 * i), 800, 70);
-
+			
+			p.textAlign(p.BASELINE);
 			p.fill(255);
 			p.textSize(15);
 			p.text(id, 10, 90 + (70 * i));
@@ -94,7 +95,7 @@ public class Logic {
 			p.text(birth, 300, 110 + (70 * i));
 		}
 		
-		switch (order) {
+		switch (this.order) {
 		case 0:
 			sortById();
 			break;
@@ -149,7 +150,25 @@ public class Logic {
 	}
 	
 	public void clickHandle() {
-		//if(p.mouseX > 266)
+		if(p.mouseX > 0 && p.mouseX < 160 && p.mouseY > 800 && p.mouseY < 880) {
+			this.order = 0;
+		}
+		
+		if(p.mouseX > 160 && p.mouseX < 160 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+			this.order = 1;
+		}
+		
+		if(p.mouseX > 320 && p.mouseX < 320 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+			this.order = 2;
+		}
+		
+		if(p.mouseX > 480 && p.mouseX < 480 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+			this.order = 3;
+		}
+		
+		if(p.mouseX > 640 && p.mouseX < 640 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+			this.order = 4;
+		}
 	}
 	
 	public void sortById() {
@@ -158,11 +177,11 @@ public class Logic {
 	
 		
 	public void sortByName() {
-		Collections.sort(dogs, new SortById());
+		Collections.sort(dogs, new SortByName());
 	}
 	
 	public void sortByAge() {
-		Collections.sort(dogs, new SortById());
+		Collections.sort(dogs, new SortByAge());
 	}
 	
 	public void sortByRace() {

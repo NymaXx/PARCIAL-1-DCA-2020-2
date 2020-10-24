@@ -28,6 +28,6 @@ public class Main extends PApplet {
 	}
 
 	public void mousePressed() {
-		
+		this.controller.clickEvents();
 	}
 }
