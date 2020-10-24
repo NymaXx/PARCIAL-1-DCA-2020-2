@@ -19,10 +19,9 @@ public class Main extends PApplet {
 
 	public void setup() {
 		order = 0;
-		controller = new ControllerMain(this);
-		logic = new Logic(this);
-		// logic.script();
-		logic.combineData();
+		this.controller = new ControllerMain(this);
+		this.logic = new Logic(this);
+		this.controller.sendData();
 	}
 
 	public void settings() {
@@ -30,14 +29,14 @@ public class Main extends PApplet {
 	}
 
 	public void draw() {
-		background(0);
-		logic.paintList();
+		background(255);
+		this.controller.paint();
 	}
 
 	public void mousePressed() {
 		switch (order) {
 		case 0:
-
+			
 			break;
 
 		case 1:

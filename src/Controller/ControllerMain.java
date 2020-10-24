@@ -10,28 +10,36 @@ public class ControllerMain {
 	PApplet p;
 
 	public ControllerMain(PApplet p) {
-		logic = new Logic(p);
+		this.logic = new Logic(p);
 		this.p = p;
+	}
+	
+	public void sendData() {
+		logic.combineData();
+	}
+	
+	public void paint() {
+		this.logic.paintList();
 	}
 
 	public void sortByName() {
-		
+		this.logic.sortByName();
 	}
 
 	public void sortByAge() {
-
+		this.logic.sortByAge();
 	}
 
 	public void sortById() {
-
+		this.logic.sortById();
 	}
 
-	public void sortByRacee() {
-
+	public void sortByRace() {
+		this.logic.sortByRace();
 	}
 
 	public void sortByBirth() {
-
+		this.logic.sortByBirth();
 	}
 
 }

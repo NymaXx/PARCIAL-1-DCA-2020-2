@@ -69,7 +69,7 @@ public class Logic {
 
 	public void paintList() {
 
-		Collections.sort(dogs, new SortById());
+		//Collections.sort(dogs, new SortById());
 
 		for (int i = 0; i < this.dogs.size(); i++) {
 
@@ -92,7 +92,27 @@ public class Logic {
 			p.text(birth, 300, 110 + (70 * i));
 		}
 	}
-
+	
+	public void sortById() {
+		Collections.sort(dogs, new SortById());
+	}
+	
+		
+	public void sortByName() {
+		Collections.sort(dogs, new SortById());
+	}
+	
+	public void sortByAge() {
+		Collections.sort(dogs, new SortById());
+	}
+	
+	public void sortByRace() {
+		Collections.sort(dogs, new SortByRace());
+	}
+	
+	public void sortByBirth() {
+		Collections.sort(dogs, new SortByDate());
+	}
 	public ArrayList<Dog> getDogs() {
 		return dogs;
 	}
