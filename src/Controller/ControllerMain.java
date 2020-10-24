@@ -19,7 +19,7 @@ public class ControllerMain {
 	}
 	
 	public void paint() {
-		this.logic.paintList();
+		this.logic.paintScreen();
 	}
 
 	public void sortByName() {

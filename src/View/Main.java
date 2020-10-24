@@ -13,14 +13,8 @@ public class Main extends PApplet {
 
 	ControllerMain controller;
 
-	int test;
-	int order;
-	Logic logic;
-
 	public void setup() {
-		order = 0;
 		this.controller = new ControllerMain(this);
-		this.logic = new Logic(this);
 		this.controller.sendData();
 	}
 
@@ -34,25 +28,6 @@ public class Main extends PApplet {
 	}
 
 	public void mousePressed() {
-		switch (order) {
-		case 0:
-			
-			break;
-
-		case 1:
-
-			break;
-
-		case 2:
-
-			break;
-
-		case 3:
-			break;
-
-		case 4:
-			break;
-
-		}
+		
 	}
 }

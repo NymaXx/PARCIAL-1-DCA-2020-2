@@ -14,12 +14,14 @@ public class Logic {
 	String[] dataTwo;
 	String[] dataOne;
 	ArrayList<Dog> dogs;
+	int order;
 
 	public Logic(PApplet p) {
 		dataTwo = p.loadStrings("datosDos.txt");
 		dataOne = p.loadStrings("datosUno.txt");
 		dogs = new ArrayList<Dog>();
 		this.p = p;
+		order = 0;
 	}
 
 	public void script() { // METODO DE PRUEBA PARA SABER SI LOS ARCHIVOS SE CARGARON CORRECTAMENTE
@@ -67,7 +69,7 @@ public class Logic {
 
 	}
 
-	public void paintList() {
+	public void paintScreen() {
 
 		//Collections.sort(dogs, new SortById());
 
@@ -91,6 +93,51 @@ public class Logic {
 			p.text(race, 10, 110 + (70 * i));
 			p.text(birth, 300, 110 + (70 * i));
 		}
+		
+		switch (order) {
+		case 0:
+			sortById();
+			break;
+			
+		case 1:
+			sortByName();
+			break;
+
+		case 2:
+			sortByAge();
+			break;
+
+		case 3:
+			sortByRace();
+			break;
+
+		case 4:
+			sortByBirth();
+			break;
+		}
+		
+		p.fill(255, 0, 0);
+		p.rect(0, 800, 160, 80);
+		
+		p.fill(0, 255, 0);
+		p.rect(160, 800, 160, 80);
+		
+		p.fill(0, 0, 255);
+		p.rect(320, 800, 160, 80);
+		
+		p.fill(255, 0, 255);
+		p.rect(480, 800, 160, 80);
+		
+		p.fill(0);
+		p.rect(640, 800, 160, 80);
+		
+		p.fill(255);
+		p.textAlign(p.CENTER, p.CENTER);
+		p.text("Ordenar por Id", 50, 850);
+	}
+	
+	public void clickHandle() {
+		//if(p.mouseX > 266)
 	}
 	
 	public void sortById() {
@@ -113,6 +160,7 @@ public class Logic {
 	public void sortByBirth() {
 		Collections.sort(dogs, new SortByDate());
 	}
+	
 	public ArrayList<Dog> getDogs() {
 		return dogs;
 	}
