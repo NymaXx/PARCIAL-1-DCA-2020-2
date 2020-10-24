@@ -15,6 +15,7 @@ public class Logic {
 	String[] dataOne;
 	ArrayList<Dog> dogs;
 	int order;
+	String currentSort;
 
 	public Logic(PApplet p) {
 		dataTwo = p.loadStrings("datosDos.txt");
@@ -22,6 +23,8 @@ public class Logic {
 		dogs = new ArrayList<Dog>();
 		this.p = p;
 		order = 0;
+		currentSort = "";
+		
 	}
 
 	public void script() { // METODO DE PRUEBA PARA SABER SI LOS ARCHIVOS SE CARGARON CORRECTAMENTE
@@ -95,25 +98,38 @@ public class Logic {
 			p.text(birth, 300, 110 + (70 * i));
 		}
 		
+		p.fill(100);
+		
+		p.textAlign(p.CENTER, p.CENTER);
+		p.textSize(20);
+		p.text("Lista de perros", 400, 10);
+		p.textSize(15);
+		p.text("Ordenado por: " + currentSort, 400, 40);
+		
 		switch (this.order) {
 		case 0:
 			sortById();
+			currentSort = "Id";
 			break;
 			
 		case 1:
 			sortByName();
+			currentSort = "Nombre";
 			break;
 
 		case 2:
 			sortByAge();
+			currentSort = "Edad";
 			break;
 
 		case 3:
 			sortByRace();
+			currentSort = "Raza";
 			break;
 
 		case 4:
 			sortByBirth();
+			currentSort = "Fecha de nacimiento";
 			break;
 		}
 		
