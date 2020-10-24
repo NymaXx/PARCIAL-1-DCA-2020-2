@@ -16,7 +16,7 @@ public class Logic {
 	String[] dataTwo;
 	String[] dataOne;
 	ArrayList<Dog> dogs;
-	int order;
+	int order; //para saber de acuerdo a cual atributo se va a ordenar la lista
 	String currentSort;
 
 	public Logic(PApplet p) {
@@ -63,11 +63,11 @@ public class Logic {
 		sortById();
 	}
 
-	public void paintScreen() {
+	public void paintScreen() { // Codigo para pintar la intefaz grafica a base de rectangulos y botones de colores
 
 		// Collections.sort(dogs, new SortById());
 
-		for (int i = 0; i < this.dogs.size(); i++) {
+		for (int i = 0; i < this.dogs.size(); i++) { //recorrer el arrayList de perros para poder pintar cada objeto
 
 			String id = "Id: " + this.dogs.get(i).getId();
 			String name = "Nombre: " + this.dogs.get(i).getName();
@@ -151,7 +151,7 @@ public class Logic {
 		p.text("Ordenar por Fecha", 720, 620);
 	}
 
-	public void clickHandle() {
+	public void clickHandle() { //Codigo de area sensible del mouse, Creacion de archivo txt por cada ordenamiento especifico
 		if (p.mouseX > 0 && p.mouseX < 160 && p.mouseY > 601 && p.mouseY < 658) {
 			this.order = 0;
 			sortById();
@@ -183,7 +183,7 @@ public class Logic {
 		}
 	}
 
-	public void createFile(ArrayList<Dog> list, String sortType) {
+	public void createFile(ArrayList<Dog> list, String sortType) { //Guardado de nuevos archivos txt
 		
 		String[] data = new String[list.size()];
 
