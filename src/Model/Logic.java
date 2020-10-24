@@ -77,23 +77,23 @@ public class Logic {
 
 			p.fill(50, 50, 100);
 			p.stroke(255);
-			p.rect(0, 70 + (70 * i), 800, 70);
+			p.rect(0, 70 + (50 * i), 800, 50);
 
-			p.textAlign(p.BASELINE);
+			p.textAlign(PApplet.BASELINE);
 			p.fill(255);
 			p.textSize(15);
-			p.text(id, 10, 90 + (70 * i));
-			p.text(name, 80, 90 + (70 * i));
-			p.text(age, 300, 90 + (70 * i));
-			p.text(race, 10, 110 + (70 * i));
-			p.text(birth, 300, 110 + (70 * i));
+			p.text(id, 10, 90 + (50 * i));
+			p.text(name, 80, 90 + (50 * i));
+			p.text(age, 300, 90 + (50 * i));
+			p.text(race, 10, 110 + (50 * i));
+			p.text(birth, 300, 110 + (50 * i));
 		}
 
 		p.fill(100);
 
-		p.textAlign(p.CENTER, p.CENTER);
+		p.textAlign(PApplet.CENTER, PApplet.CENTER);
 		p.textSize(20);
-		p.text("Lista de perros", 400, 10);
+		p.text("Lista de perros: Peludos Sin Hogar", 400, 10);
 		p.textSize(15);
 		p.text("Ordenado por: " + currentSort, 400, 40);
 
@@ -120,63 +120,63 @@ public class Logic {
 		}
 
 		p.fill(255, 0, 0);
-		p.rect(0, 800, 160, 80);
+		p.rect(0, 600, 160, 60);
 
 		p.fill(0, 155, 0);
-		p.rect(160, 800, 160, 80);
+		p.rect(160, 600, 160, 60);
 
 		p.fill(0, 0, 255);
-		p.rect(320, 800, 160, 80);
+		p.rect(320, 600, 160, 60);
 
 		p.fill(255, 0, 155);
-		p.rect(480, 800, 160, 80);
+		p.rect(480, 600, 160, 60);
 
 		p.fill(0);
-		p.rect(640, 800, 160, 80);
+		p.rect(640, 600, 160, 60);
 
 		p.fill(255);
-		p.textAlign(p.CENTER, p.CENTER);
-		p.text("Ordenar por Id", 80, 840);
+		p.textAlign(PApplet.CENTER, PApplet.CENTER);
+		p.text("Ordenar por Id", 80, 620);
 
-		p.textAlign(p.CENTER, p.CENTER);
-		p.text("Ordenar por Nombre", 240, 840);
+		p.textAlign(PApplet.CENTER, PApplet.CENTER);
+		p.text("Ordenar por Nombre", 240, 620);
 
-		p.textAlign(p.CENTER, p.CENTER);
-		p.text("Ordenar por Edad", 400, 840);
+		p.textAlign(PApplet.CENTER, PApplet.CENTER);
+		p.text("Ordenar por Edad", 400, 620);
 
-		p.textAlign(p.CENTER, p.CENTER);
-		p.text("Ordenar por Raza", 560, 840);
+		p.textAlign(PApplet.CENTER, PApplet.CENTER);
+		p.text("Ordenar por Raza", 560, 620);
 
-		p.textAlign(p.CENTER, p.CENTER);
-		p.text("Ordenar por Fecha", 720, 840);
+		p.textAlign(PApplet.CENTER, PApplet.CENTER);
+		p.text("Ordenar por Fecha", 720, 620);
 	}
 
 	public void clickHandle() {
-		if (p.mouseX > 0 && p.mouseX < 160 && p.mouseY > 800 && p.mouseY < 880) {
+		if (p.mouseX > 0 && p.mouseX < 160 && p.mouseY > 601 && p.mouseY < 658) {
 			this.order = 0;
 			sortById();
 			createFile(dogs, "Id");
 		}
 
-		if (p.mouseX > 160 && p.mouseX < 160 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+		if (p.mouseX > 160 && p.mouseX < 160 + 160 && p.mouseY > 601 && p.mouseY < 658) {
 			this.order = 1;
 			sortByName();
 			createFile(dogs, "Nombre");
 		}
 
-		if (p.mouseX > 320 && p.mouseX < 320 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+		if (p.mouseX > 320 && p.mouseX < 320 + 160 && p.mouseY > 601 && p.mouseY < 658) {
 			this.order = 2;
 			sortByAge();
 			createFile(dogs, "Edad");
 		}
 
-		if (p.mouseX > 480 && p.mouseX < 480 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+		if (p.mouseX > 480 && p.mouseX < 480 + 160 && p.mouseY > 601 && p.mouseY < 658) {
 			this.order = 3;
 			sortByRace();
 			createFile(dogs, "Raza");
 		}
 
-		if (p.mouseX > 640 && p.mouseX < 640 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+		if (p.mouseX > 640 && p.mouseX < 640 + 160 && p.mouseY > 601 && p.mouseY < 658) {
 			this.order = 4;
 			sortByBirth();
 			createFile(dogs, "Nacimiento");
