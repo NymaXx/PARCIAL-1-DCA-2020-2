@@ -119,13 +119,13 @@ public class Logic {
 		p.fill(255, 0, 0);
 		p.rect(0, 800, 160, 80);
 		
-		p.fill(0, 255, 0);
+		p.fill(0, 155, 0);
 		p.rect(160, 800, 160, 80);
 		
 		p.fill(0, 0, 255);
 		p.rect(320, 800, 160, 80);
 		
-		p.fill(255, 0, 255);
+		p.fill(255, 0, 155);
 		p.rect(480, 800, 160, 80);
 		
 		p.fill(0);
@@ -133,7 +133,19 @@ public class Logic {
 		
 		p.fill(255);
 		p.textAlign(p.CENTER, p.CENTER);
-		p.text("Ordenar por Id", 50, 850);
+		p.text("Ordenar por Id", 80, 840);
+		
+		p.textAlign(p.CENTER, p.CENTER);
+		p.text("Ordenar por Nombre", 240, 840);
+		
+		p.textAlign(p.CENTER, p.CENTER);
+		p.text("Ordenar por Edad", 400, 840);
+		
+		p.textAlign(p.CENTER, p.CENTER);
+		p.text("Ordenar por Raza", 560, 840);
+		
+		p.textAlign(p.CENTER, p.CENTER);
+		p.text("Ordenar por Fecha", 720, 840);
 	}
 	
 	public void clickHandle() {
