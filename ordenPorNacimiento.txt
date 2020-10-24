@@ -1,0 +1,10 @@
+3,floppi,20,doberman,25-02-1999
+1,cancerbero,12,pastor australiano,25-04-2002
+6,white,9,pitbull,01-12-2010
+10,firulais,8,galgo,21-02-2011
+4,anibal,6,lobero irlandes,10-07-2013
+8,pegaso,5,bulldog frances,06-01-2014
+2,mateo,5,gran danes,12-05-2014
+7,gasper,15,beagle,10-10-2014
+5,doggy,2,labrador,10-11-2017
+9,zorro,1,borzoi,20-06-2018

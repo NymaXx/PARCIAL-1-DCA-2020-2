@@ -1,8 +1,10 @@
 package Model;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
@@ -24,7 +26,7 @@ public class Logic {
 		this.p = p;
 		order = 0;
 		currentSort = "";
-		
+
 	}
 
 	public void script() { // METODO DE PRUEBA PARA SABER SI LOS ARCHIVOS SE CARGARON CORRECTAMENTE
@@ -57,24 +59,13 @@ public class Logic {
 				}
 			}
 		}
-
-		// Verificar si los datos se unieron correctamente
-		/*
-		 * for (int i = 0; i < this.dogs.size(); i++) {
-		 * 
-		 * int id = this.dogs.get(i).getId(); String name = this.dogs.get(i).getName();
-		 * int age = this.dogs.get(i).getAge(); String race =
-		 * this.dogs.get(i).getRace(); String birth = this.dogs.get(i).getBirth();
-		 * 
-		 * System.out.println( id + "," + name + "," + age + "," + race + "," + birth);
-		 * }
-		 */
-
+		
+		sortById();
 	}
 
 	public void paintScreen() {
 
-		//Collections.sort(dogs, new SortById());
+		// Collections.sort(dogs, new SortById());
 
 		for (int i = 0; i < this.dogs.size(); i++) {
 
@@ -87,7 +78,7 @@ public class Logic {
 			p.fill(50, 50, 100);
 			p.stroke(255);
 			p.rect(0, 70 + (70 * i), 800, 70);
-			
+
 			p.textAlign(p.BASELINE);
 			p.fill(255);
 			p.textSize(15);
@@ -97,117 +88,146 @@ public class Logic {
 			p.text(race, 10, 110 + (70 * i));
 			p.text(birth, 300, 110 + (70 * i));
 		}
-		
+
 		p.fill(100);
-		
+
 		p.textAlign(p.CENTER, p.CENTER);
 		p.textSize(20);
 		p.text("Lista de perros", 400, 10);
 		p.textSize(15);
 		p.text("Ordenado por: " + currentSort, 400, 40);
-		
+
 		switch (this.order) {
 		case 0:
-			sortById();
 			currentSort = "Id";
 			break;
-			
+
 		case 1:
-			sortByName();
 			currentSort = "Nombre";
 			break;
 
 		case 2:
-			sortByAge();
 			currentSort = "Edad";
 			break;
 
 		case 3:
-			sortByRace();
 			currentSort = "Raza";
 			break;
 
 		case 4:
-			sortByBirth();
 			currentSort = "Fecha de nacimiento";
 			break;
 		}
-		
+
 		p.fill(255, 0, 0);
 		p.rect(0, 800, 160, 80);
-		
+
 		p.fill(0, 155, 0);
 		p.rect(160, 800, 160, 80);
-		
+
 		p.fill(0, 0, 255);
 		p.rect(320, 800, 160, 80);
-		
+
 		p.fill(255, 0, 155);
 		p.rect(480, 800, 160, 80);
-		
+
 		p.fill(0);
 		p.rect(640, 800, 160, 80);
-		
+
 		p.fill(255);
 		p.textAlign(p.CENTER, p.CENTER);
 		p.text("Ordenar por Id", 80, 840);
-		
+
 		p.textAlign(p.CENTER, p.CENTER);
 		p.text("Ordenar por Nombre", 240, 840);
-		
+
 		p.textAlign(p.CENTER, p.CENTER);
 		p.text("Ordenar por Edad", 400, 840);
-		
+
 		p.textAlign(p.CENTER, p.CENTER);
 		p.text("Ordenar por Raza", 560, 840);
-		
+
 		p.textAlign(p.CENTER, p.CENTER);
 		p.text("Ordenar por Fecha", 720, 840);
 	}
-	
+
 	public void clickHandle() {
-		if(p.mouseX > 0 && p.mouseX < 160 && p.mouseY > 800 && p.mouseY < 880) {
+		if (p.mouseX > 0 && p.mouseX < 160 && p.mouseY > 800 && p.mouseY < 880) {
 			this.order = 0;
+			sortById();
+			createFile(dogs, "Id");
 		}
-		
-		if(p.mouseX > 160 && p.mouseX < 160 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+
+		if (p.mouseX > 160 && p.mouseX < 160 + 160 && p.mouseY > 800 && p.mouseY < 880) {
 			this.order = 1;
+			sortByName();
+			createFile(dogs, "Nombre");
 		}
-		
-		if(p.mouseX > 320 && p.mouseX < 320 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+
+		if (p.mouseX > 320 && p.mouseX < 320 + 160 && p.mouseY > 800 && p.mouseY < 880) {
 			this.order = 2;
+			sortByAge();
+			createFile(dogs, "Edad");
 		}
-		
-		if(p.mouseX > 480 && p.mouseX < 480 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+
+		if (p.mouseX > 480 && p.mouseX < 480 + 160 && p.mouseY > 800 && p.mouseY < 880) {
 			this.order = 3;
+			sortByRace();
+			createFile(dogs, "Raza");
 		}
-		
-		if(p.mouseX > 640 && p.mouseX < 640 + 160 && p.mouseY > 800 && p.mouseY < 880) {
+
+		if (p.mouseX > 640 && p.mouseX < 640 + 160 && p.mouseY > 800 && p.mouseY < 880) {
 			this.order = 4;
+			sortByBirth();
+			createFile(dogs, "Nacimiento");
 		}
 	}
-	
+
+	public void createFile(ArrayList<Dog> list, String sortType) {
+		
+		String[] data = new String[list.size()];
+
+		for (int i = 0; i < list.size(); i++) {
+			String id = String.valueOf(list.get(i).getId());
+			String name = list.get(i).getName();
+			String age = String.valueOf(list.get(i).getAge());
+			String race = list.get(i).getRace();
+
+			String pattern = "dd-MM-yyyy";
+			DateFormat format = new SimpleDateFormat(pattern);
+
+			String birth = format.format(list.get(i).getBirth());
+			
+			String line = id + "," + name + "," + age + "," + race + "," + birth;
+			
+			data[i] = line.toLowerCase();
+			
+			System.out.println(data[i]);
+		}
+		
+		p.saveStrings("ordenPor"+ sortType + ".txt", data);
+	}
+
 	public void sortById() {
 		Collections.sort(dogs, new SortById());
 	}
-	
-		
+
 	public void sortByName() {
 		Collections.sort(dogs, new SortByName());
 	}
-	
+
 	public void sortByAge() {
 		Collections.sort(dogs, new SortByAge());
 	}
-	
+
 	public void sortByRace() {
 		Collections.sort(dogs, new SortByRace());
 	}
-	
+
 	public void sortByBirth() {
 		Collections.sort(dogs, new SortByDate());
 	}
-	
+
 	public ArrayList<Dog> getDogs() {
 		return dogs;
 	}
